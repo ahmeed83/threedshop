@@ -1,17 +1,14 @@
 import './header.scss';
 
-import React, { useState, useEffect } from 'react';
-import { Translate, Storage } from 'react-jhipster';
-import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { NavLink as Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Storage, Translate} from 'react-jhipster';
+import {Collapse, Container, Nav, Navbar, NavbarToggler} from 'reactstrap';
 import LoadingBar from 'react-redux-loading-bar';
 
-import { isRTL } from 'app/config/translation';
+import {isRTL} from 'app/config/translation';
 
-import { Home, Brand } from './header-components';
-import { AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu } from '../menus';
+import {Brand, Home} from './header-components';
+import {AccountMenu, AdminMenu, EntitiesMenu, LocaleMenu} from '../menus';
 
 export interface IHeaderProps {
   isAuthenticated: boolean;
@@ -38,7 +35,7 @@ const Header = (props: IHeaderProps) => {
     props.isInProduction === false ? (
       <div className="ribbon dev">
         <a href="">
-          <Translate contentKey={`global.ribbon.${props.ribbonEnv}`} />
+          <Translate contentKey={`global.ribbon.${props.ribbonEnv}`}/>
         </a>
       </div>
     ) : null;
@@ -50,21 +47,23 @@ const Header = (props: IHeaderProps) => {
   return (
     <div id="app-header">
       {renderDevRibbon()}
-      <LoadingBar className="loading-bar" />
-      <Navbar dark expand="sm" fixed="top" className="bg-primary">
-        <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
-        <Brand />
-        <Collapse isOpen={menuOpen} navbar>
-          <Nav id="header-tabs" className="ml-auto" navbar>
-            <Home />
-            {props.isAuthenticated && <EntitiesMenu />}
-            {props.isAuthenticated && props.isAdmin && (
-              <AdminMenu showSwagger={props.isSwaggerEnabled} showDatabase={!props.isInProduction} />
-            )}
-            <LocaleMenu currentLocale={props.currentLocale} onClick={handleLocaleChange} />
-            <AccountMenu isAuthenticated={props.isAuthenticated} />
-          </Nav>
-        </Collapse>
+      <LoadingBar className="loading-bar"/>
+      <Navbar className="navbar navbar-inverse navbar-light navbar-expand-md justify-content-center fixed-top">
+        <Container>
+          <Brand/>
+          <NavbarToggler aria-label="Menu" onClick={toggleMenu}/>
+          <Collapse isOpen={menuOpen} navbar>
+            <Nav id="header-tabs" className="ml-auto" navbar>
+              <Home/>
+              <LocaleMenu currentLocale={props.currentLocale} onClick={handleLocaleChange}/>
+              <AccountMenu isAuthenticated={props.isAuthenticated}/>
+              {props.isAuthenticated && props.isAdmin && <EntitiesMenu/>}
+              {props.isAuthenticated && props.isAdmin && (
+                <AdminMenu showSwagger={props.isSwaggerEnabled} showDatabase={!props.isInProduction}/>
+              )}
+            </Nav>
+          </Collapse>
+        </Container>
       </Navbar>
     </div>
   );

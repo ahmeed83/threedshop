@@ -73,3 +73,14 @@ Navbar styles
   top: 0px;
   z-index: 1031;
 }
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1800px;
+  }
+}
+
+.navbar {
+  padding: 25px;
+  background-color: black;
+}

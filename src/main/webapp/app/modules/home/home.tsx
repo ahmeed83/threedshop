@@ -4,98 +4,96 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Translate } from 'react-jhipster';
 import { connect } from 'react-redux';
-import { Row, Col, Alert } from 'reactstrap';
+import { Row, Col, Alert, Container, Form, FormGroup, Input, Label, CustomInput } from 'reactstrap';
 
 import { IRootState } from 'app/shared/reducers';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faShoppingBasket, faHeart } from "@fortawesome/free-solid-svg-icons";
+library.add(faShoppingBasket, faHeart);
+
 export type IHomeProp = StateProps;
+
+
+export const LaptopPic = props => (
+  <div {...props}>
+    <img src="content/images3d/laptop.jpg" alt="pic" />
+  </div>
+);
 
 export const Home = (props: IHomeProp) => {
   const { account } = props;
 
   return (
-    <Row>
-      <Col md="9">
-        <h2>
-          <Translate contentKey="home.title">Welcome, Java Hipster!</Translate>
-        </h2>
-        <p className="lead">
-          <Translate contentKey="home.subtitle">This is your homepage</Translate>
-        </p>
-        {account && account.login ? (
-          <div>
-            <Alert color="success">
-              <Translate contentKey="home.logged.message" interpolate={{ username: account.login }}>
-                You are logged in as user {account.login}.
-              </Translate>
-            </Alert>
+    <Container className="pt-5">
+      <Row>
+        <Col lr="2" md="2">
+          <h4>Filter</h4>
+          <hr />
+          <div className="pt-2 " data-role="main">
+            <Form>
+              <FormGroup>
+                <Label for="exampleCustomRange">Price</Label>
+                <CustomInput type="range" id="exampleCustomRange" name="customRange" />
+              </FormGroup>
+              <hr />
+              <h5 className="pt-2">Category</h5>
+              <FormGroup className="pt-2" check>
+                <Input type="checkbox" name="Laptop" id="Laptop"/>
+                <Label for="exampleCheck" check>Laptop</Label>
+              </FormGroup>
+              <FormGroup className="pt-2" check>
+                <Input type="checkbox" name="Mobile" id="Mobile"/>
+                <Label for="exampleCheck" check>Mobile</Label>
+              </FormGroup>
+              <FormGroup className="pt-2" check>
+                <Input type="checkbox" name="Desktop" id="Desktop"/>
+                <Label for="exampleCheck" check>Desktop</Label>
+              </FormGroup>
+              <FormGroup className="pt-2" check>
+                <Input type="checkbox" name="Game" id="Game"/>
+                <Label for="exampleCheck" check>Game</Label>
+              </FormGroup>
+            </Form>
           </div>
-        ) : (
-          <div>
-            <Alert color="warning">
-              <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
-              <Link to="/login" className="alert-link">
-                <Translate contentKey="global.messages.info.authenticated.link"> sign in</Translate>
-              </Link>
-              <Translate contentKey="global.messages.info.authenticated.suffix">
-                , you can try the default accounts:
-                <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-                <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-              </Translate>
-            </Alert>
+        </Col>
+        <Col lr="10" md="10" sm="10">
+          <Row>
+            {[...Array(16)].map((x, i) =>
+              <Col key={i} md="3" sm="6">
+                <div className="product-grid6">
+                  <div className="product-image6">
+                    <a href="#">
+                      <LaptopPic />
+                    </a>
+                  </div>
+                  <div className="product-content">
+                    <h3 className="title"><a href="#">The New Razer Blade 15</a></h3>
+                    <div className="price">$110.00
+                      <span>$140.00</span>
+                    </div>
+                  </div>
+                  <ul className="social">
+                    <li><a href="" data-tip="Quick View">
+                      <FontAwesomeIcon icon="search" />
+                    </a>
+                    </li>
+                    <li><a href="" data-tip="Add to Wishlist">
+                      <FontAwesomeIcon icon="heart"/>
+                    </a></li>
+                    <li><a href="" data-tip="Add to Cart">
+                      <FontAwesomeIcon icon="shopping-basket" />
+                    </a></li>
+                  </ul>
+                </div>
+              </Col>
+            )}
+          </Row>
+        </Col>
+      </Row>
 
-            <Alert color="warning">
-              <Translate contentKey="global.messages.info.register.noaccount">You do not have an account yet?</Translate>&nbsp;
-              <Link to="/account/register" className="alert-link">
-                <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
-              </Link>
-            </Alert>
-          </div>
-        )}
-        <p>
-          <Translate contentKey="home.question">If you have any question on JHipster:</Translate>
-        </p>
-
-        <ul>
-          <li>
-            <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.homepage">JHipster homepage</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.stackoverflow">JHipster on Stack Overflow</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.bugtracker">JHipster bug tracker</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.chat">JHipster public chat room</Translate>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">
-              <Translate contentKey="home.link.follow">follow @jhipster on Twitter</Translate>
-            </a>
-          </li>
-        </ul>
-
-        <p>
-          <Translate contentKey="home.like">If you like JHipster, do not forget to give us a star on</Translate>{' '}
-          <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">
-            Github
-          </a>
-          !
-        </p>
-      </Col>
-      <Col md="3" className="pad">
-        <span className="hipster rounded" />
-      </Col>
-    </Row>
+    </Container>
   );
 };
 
