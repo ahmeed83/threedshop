@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "app.focusit.threedshop",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.6.0",
+    "applicationType": "monolith",
+    "baseName": "threedshop",
+    "packageName": "app.focusit.threedshop",
+    "packageFolder": "app/focusit/threedshop",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MzUxMGFmOWU2NzM2OTU3OWEzM2NhMDc4Yjg1OTU0NTg3NjFiZDlkODA2OTQxZGRmYmNkOTRkY2M4MTA2ZGI5ZWI1M2M2OWQ4YzAxMmFkMWViODhkN2IzZjk4ZTQ1NzMxOGRkMmY0M2Y2NDZlMzA4MTBkYjRiZjg1NjY4ZGQxYmE=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "react",
+    "clientTheme": "darkly",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1579795695314,
+    "testFrameworks": ["cucumber", "protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "ar-ly"],
+    "blueprints": []
+  }
+}
