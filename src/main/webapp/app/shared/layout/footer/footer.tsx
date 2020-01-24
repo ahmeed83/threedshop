@@ -2,6 +2,7 @@ import './footer.scss';
 
 import React from 'react';
 import {Col, Container, Row} from 'reactstrap';
+import {Translate} from "react-jhipster";
 
 const Footer = props => (
   <div className="footer page-content">
@@ -9,10 +10,10 @@ const Footer = props => (
       <Row>
         <Col>
           <p>
-            {/*<Translate contentKey="footer">Your footer</Translate>*/}
             <div className="single_ftr">
               <h4 className="sf_title">Contacts</h4>
               <ul>
+                <li><Translate contentKey="footer">Your footer</Translate></li>
                 <li>4080 Repperts Coaol Road Sackson, MS 00201 USA</li>
                 <li>(+123) 685 78 455 <br/> (+064) 336 987 245</li>
                 <li>Contact@yourcompany.com</li>
