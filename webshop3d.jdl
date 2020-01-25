@@ -1,0 +1,64 @@
+entity Customer {
+	id Integer required,
+	name String required minlength(3),
+    email String required minlength(3),
+    phone String required minlength(3),
+    city String required minlength(3),
+    district String minlength(3)
+}
+
+entity Order {
+	id Integer required,
+    totalPrice Double required,
+    orderDate LocalDate required,
+    status String required
+}
+
+entity Cart {
+	id Integer required,
+	cartTotal Double required
+}
+
+entity CartItem {
+	id Integer required,
+    quantity Integer required,
+    price Double required
+}
+
+entity Product {
+	id Integer required,
+	name String required minlength(3),
+    description String required minlength(3),
+    quantity Integer required,
+    image String required minlength(3),
+    price Double required,
+    lastUpdate LocalDate required
+}
+
+entity Category {
+	id Integer required,
+    name String required minlength(3),
+    lastUpdate LocalDate required
+}
+
+relationship ManyToOne {
+    Customer{order(id)} to Order
+}
+
+relationship ManyToOne {
+    Product{category(id)} to Category
+}
+
+relationship ManyToOne {
+    CartItem{cart(id)} to Cart
+}
+
+relationship OneToOne {
+    CartItem{product(id)} to Product
+}
+
+relationship ManyToOne {
+    CartItem{order(id)} to Order
+}
+
+paginate Product, Order, Customer with infinite-scroll
