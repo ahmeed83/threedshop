@@ -26,7 +26,7 @@ const Admin = Loadable({
 });
 
 const Routes = () => (
-  <div className="view-routes">
+  <div className="view-routes pt-5 px-5 container">
     <Switch>
       <ErrorBoundaryRoute path="/login" component={Login} />
       <ErrorBoundaryRoute path="/logout" component={Logout} />

@@ -45,6 +45,12 @@ public class CacheConfiguration {
             createCache(cm, app.focusit.threedshop.domain.User.class.getName());
             createCache(cm, app.focusit.threedshop.domain.Authority.class.getName());
             createCache(cm, app.focusit.threedshop.domain.User.class.getName() + ".authorities");
+            createCache(cm, app.focusit.threedshop.domain.Customer.class.getName());
+            createCache(cm, app.focusit.threedshop.domain.Order.class.getName());
+            createCache(cm, app.focusit.threedshop.domain.Cart.class.getName());
+            createCache(cm, app.focusit.threedshop.domain.CartItem.class.getName());
+            createCache(cm, app.focusit.threedshop.domain.Product.class.getName());
+            createCache(cm, app.focusit.threedshop.domain.Category.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
